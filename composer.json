@@ -1,0 +1,41 @@
+{
+    "name": "xshellz/xshellz",
+    "description": "Official PHP SDK for xShellz sandboxes: throwaway, gVisor-isolated Linux boxes you can spawn and run commands in from your own program.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": ["xshellz", "sandbox", "ssh", "gvisor", "remote-execution"],
+    "homepage": "https://xshellz.com",
+    "support": {
+        "issues": "https://github.com/xshellz/xshellz-php/issues",
+        "source": "https://github.com/xshellz/xshellz-php"
+    },
+    "require": {
+        "php": ">=8.2",
+        "guzzlehttp/guzzle": "^7.8",
+        "phpseclib/phpseclib": "^3.0"
+    },
+    "require-dev": {
+        "pestphp/pest": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Xshellz\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Xshellz\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "pest"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

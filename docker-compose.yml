@@ -1,0 +1,19 @@
+services:
+  test:
+    build: .
+    working_dir: /work
+    # Run as the host user so vendor/ etc. are not root-owned in the mounted
+    # repo (override with DOCKER_UID / DOCKER_GID if your uid differs).
+    user: "${DOCKER_UID:-1000}:${DOCKER_GID:-1000}"
+    volumes:
+      - .:/work
+      # Named volume mounted over /tmp (1777 in the image, so any uid can
+      # write) keeps the composer cache warm between runs.
+      - composer-cache:/tmp
+    environment:
+      COMPOSER_HOME: /tmp/composer
+      COMPOSER_CACHE_DIR: /tmp/composer-cache
+    command: sh -c "composer install --no-interaction --prefer-dist && composer test"
+
+volumes:
+  composer-cache:
