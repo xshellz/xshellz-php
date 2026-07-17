@@ -1,5 +1,7 @@
 # xshellz
 
+[![Packagist](https://img.shields.io/packagist/v/xshellz/xshellz)](https://packagist.org/packages/xshellz/xshellz)
+
 Official PHP SDK for [xShellz](https://xshellz.com) sandboxes: throwaway,
 gVisor-isolated Linux boxes you can spawn and run commands in from your own
 program - in three lines.
