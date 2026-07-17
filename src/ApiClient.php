@@ -17,7 +17,7 @@ use Xshellz\Exceptions\XshellzException;
  */
 final class ApiClient
 {
-    private const USER_AGENT = 'xshellz-php/0.1.0';
+    private const USER_AGENT = 'xshellz-php/0.2.0';
 
     /**
      * 403 message fragments emitted by the control plane's guard chain. All
@@ -116,6 +116,18 @@ final class ApiClient
     public function post(string $path, ?array $json = null): mixed
     {
         return $this->request('POST', $path, $json);
+    }
+
+    /**
+     * @param array<string, mixed>|null $json
+     *
+     * @throws AuthException
+     * @throws QuotaException
+     * @throws ApiException
+     */
+    public function put(string $path, ?array $json = null): mixed
+    {
+        return $this->request('PUT', $path, $json);
     }
 
     /**

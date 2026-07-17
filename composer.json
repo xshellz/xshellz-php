@@ -28,7 +28,8 @@
         }
     },
     "scripts": {
-        "test": "pest"
+        "test": "pest",
+        "test:coverage": "pest --coverage --min=80"
     },
     "config": {
         "sort-packages": true,

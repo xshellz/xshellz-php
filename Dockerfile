@@ -8,3 +8,6 @@ COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 RUN apt-get update \
     && apt-get install -y --no-install-recommends git unzip \
     && rm -rf /var/lib/apt/lists/*
+
+# pcov: coverage driver for the Pest --coverage --min=80 gate.
+RUN pecl install pcov && docker-php-ext-enable pcov

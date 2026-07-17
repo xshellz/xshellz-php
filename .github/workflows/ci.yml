@@ -19,10 +19,10 @@ jobs:
       - uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
-          coverage: none
+          coverage: pcov
 
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
 
-      - name: Run tests
-        run: composer test
+      - name: Run tests (coverage gate ≥ 80%)
+        run: composer test:coverage

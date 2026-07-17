@@ -22,6 +22,9 @@ final class FakeTransport implements SshTransportInterface
 
     public CommandResult $nextResult;
 
+    /** @var list<CommandResult> Shifted one per exec() before falling back to $nextResult. */
+    public array $queuedResults = [];
+
     /** @var list<array{0: 'stdout'|'stderr', 1: string}> */
     public array $streamChunks = [];
 
@@ -45,6 +48,10 @@ final class FakeTransport implements SshTransportInterface
             if ($stream === 'stderr' && $onStderr !== null) {
                 $onStderr($chunk);
             }
+        }
+
+        if ($this->queuedResults !== []) {
+            return array_shift($this->queuedResults);
         }
 
         return $this->nextResult;

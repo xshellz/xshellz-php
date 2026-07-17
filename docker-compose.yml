@@ -13,7 +13,7 @@ services:
     environment:
       COMPOSER_HOME: /tmp/composer
       COMPOSER_CACHE_DIR: /tmp/composer-cache
-    command: sh -c "composer install --no-interaction --prefer-dist && composer test"
+    command: sh -c "composer install --no-interaction --prefer-dist && composer test:coverage"
 
 volumes:
   composer-cache:
